@@ -4,12 +4,14 @@ import {useState} from "react";
 import logo from '../assets/resumeRadar.png'
 import handleSignUp from "@/utils/SignUpHandler.ts";
 import {NavLink} from "react-router-dom";
+import Header from "@/components/Header.tsx";
 
 export default function SignIn({operation}){
 
     const [username, setUsername] = useState("")
     const [password, setPassword] = useState("")
     return <div className={"flex-col flex justify-center items-center min-h-screen bg-blue-950"}>
+        <Header/>
         <form className={"flex flex-col justify-center items-center rounded-xl w-11/12 bg-white p-10 md:w-2/3"} onSubmit={operation === 'signin' ? (e)=>handleSignIn(e) : (e)=>handleSignUp(e)}>
         <h1>Resume Radar</h1>
         <img className={"w-1/3"} src={logo} alt="logo image"/>
