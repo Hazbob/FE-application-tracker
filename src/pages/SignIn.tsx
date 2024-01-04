@@ -5,6 +5,7 @@ import logo from '../assets/resumeRadar.png'
 import handleSignUp from "@/utils/SignUpHandler.ts";
 import {NavLink} from "react-router-dom";
 import Header from "@/components/Header.tsx";
+import {ApplicationCard} from "@/components/ApplicationCard.tsx";
 
 export default function SignIn({operation}){
 
@@ -21,8 +22,10 @@ export default function SignIn({operation}){
             <input className={"border-2 border-black rounded-xl p-2 "} onChange={e=> setPassword(e.target.value)} type="text" id={"password"} value={password}/>
             <Button className={"my-2"} type={"submit"}>{operation === 'signin' ? 'Sign In'  : "Sign Up"}</Button>
             {operation === 'signin'
-                ? <p>Not a member? <NavLink className={"text-blue-700 underline"} to={"/signup"}>Sign Up</NavLink></p>
-                : <p >Already a member? <NavLink className={"text-blue-700 underline"}  to={"/signin"}>Sign In</NavLink></p>
+                ? <div><p>Not a member?</p> <NavLink className={"text-blue-700 underline"} to={"/signup"}>Sign
+                    Up</NavLink></div>
+                : <div><p>Already a member?</p> <NavLink className={"text-blue-700 underline"} to={"/signin"}>Sign
+                    In</NavLink></div>
             }
         </form>
     </div>
