@@ -1,5 +1,4 @@
 export async function saveTokenToStorage(token: string) {
-  console.log(token);
   localStorage.setItem("token", token);
 }
 

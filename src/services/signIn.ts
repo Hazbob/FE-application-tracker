@@ -1,0 +1,30 @@
+import { Simulate } from "react-dom/test-utils";
+import error = Simulate.error;
+import { data } from "autoprefixer";
+
+export default async function userSignIn(e, username, password) {
+  e.preventDefault();
+  try {
+    const res = await fetch(import.meta.env.VITE_API_URL + "signin", {
+      method: "POST",
+      mode: "cors",
+      body: JSON.stringify({ username, password }),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+
+    const data = await res.json();
+    if (!res.ok) {
+      throw new Error(data.message);
+    }
+
+    if (data.token) {
+      return data.token;
+    } else {
+      throw new Error("Received no token in response");
+    }
+  } catch (err) {
+    throw err;
+  }
+}
