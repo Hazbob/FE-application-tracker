@@ -4,6 +4,7 @@ import { InputButton } from "@/components/InputButton.tsx";
 import { useState, useEffect } from "react";
 import { getTokenFromStorage } from "@/utils/tokenStorage.ts";
 import { useNavigate } from "react-router-dom";
+import SignOutButton from "@/components/SignOutButton.tsx";
 
 export default function Homepage() {
   const [companyName, setCompanyName] = useState("");
@@ -99,16 +100,19 @@ export default function Homepage() {
       }
     >
       <Header />
-      <InputButton
-        companyName={companyName}
-        setCompanyName={setCompanyName}
-        jobTitle={jobTitle}
-        setJobTitle={setJobTitle}
-        notes={notes}
-        setNotes={setNotes}
-        setApplications={setApplications}
-        applications={applications}
-      />
+      <div className={"flex gap-2 items-center"}>
+        <InputButton
+          companyName={companyName}
+          setCompanyName={setCompanyName}
+          jobTitle={jobTitle}
+          setJobTitle={setJobTitle}
+          notes={notes}
+          setNotes={setNotes}
+          setApplications={setApplications}
+          applications={applications}
+        />
+        <SignOutButton />
+      </div>
       <ApplicationCard
         setApplications={setApplications}
         applications={applications}

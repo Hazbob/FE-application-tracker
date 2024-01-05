@@ -20,9 +20,6 @@ export function InputButton({
   setApplications,
   applications,
 }) {
-  // const [companyName, setCompanyName] = useState("");
-  // const [jobTitle, setJobTitle] = useState("");
-  // const [notes, setNotes] = useState("");
   const [isDialogOpen, setIsDialogOpen] = useState(false);
 
   async function handleAddApp(e) {
