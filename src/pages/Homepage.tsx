@@ -1,7 +1,9 @@
 import Header from "@/components/Header.tsx";
 import { ApplicationCard } from "@/components/ApplicationCard.tsx";
 import { InputButton } from "@/components/InputButton.tsx";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { getTokenFromStorage } from "@/utils/tokenStorage.ts";
+import { useNavigate } from "react-router-dom";
 
 export default function Homepage() {
   const [companyName, setCompanyName] = useState("");
@@ -80,6 +82,16 @@ export default function Homepage() {
       id: "adadwadaiwhdoa8768gaiugsdiaugihwdoa",
     },
   ]);
+
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const JWT = getTokenFromStorage().then((data) => {
+      if (!data) {
+        navigate("/signin");
+      }
+    });
+  }, [navigate]);
   return (
     <div
       className={
