@@ -5,87 +5,19 @@ import { useState, useEffect } from "react";
 import { getTokenFromStorage } from "@/utils/tokenStorage.ts";
 import { useNavigate } from "react-router-dom";
 import SignOutButton from "@/components/SignOutButton.tsx";
+import getApplications from "@/services/getApplication.ts";
 
 export default function Homepage() {
   const [companyName, setCompanyName] = useState("");
   const [jobTitle, setJobTitle] = useState("");
   const [notes, setNotes] = useState("");
-  const [applications, setApplications] = useState([
-    {
-      jobTitle: "Junior software developer",
-      companyName: "Mcdonalds",
-      notes: "1",
-      status: "APPLIED",
-      createdAt: "20/20/20",
-      appliedDate: null,
-      id: "adadwadaiwhdoaihwdoa",
-    },
-    {
-      jobTitle: "Junior software developer",
-      companyName: "Mcdonalds",
-      notes: "2",
-      status: "APPLIED",
-      appliedDate: null,
-      id: "adadwadaiwhdoaddddihwdoa",
-    },
-    {
-      jobTitle: "Junior software developer",
-      companyName: "Mcdonalds",
-      notes: "3 lorem",
-      status: "APPLIED",
-      createdAt: "20/20/20",
-      appliedDate: "20/20/20",
-      id: "adadwadaiwhdoaihwaaaaadoa",
-    },
-    {
-      jobTitle: "Junior software developer",
-      companyName: "Mcdonalds",
-      notes: "4 lorem",
-      status: "APPLIED",
-      createdAt: "20/20/20",
-      appliedDate: "20/20/20",
-      id: "adadwadaiwhdoaihwdwwwwwwoa",
-    },
-    {
-      jobTitle: "Junior software developer",
-      companyName: "Mcdonalds",
-      notes: "5 lorem",
-      status: "APPLIED",
-      createdAt: "20/20/20",
-      appliedDate: "20/20/20",
-      id: "adadwadai2222whdoaihwdoa",
-    },
-    {
-      jobTitle: "Junior software developer",
-      companyName: "Mcdonalds",
-      notes: "6 lorem",
-      status: "APPLIED",
-      createdAt: "20/20/20",
-      appliedDate: "20/20/20",
-      id: "adadwadaiwhdoaih;;;;;;wdoa",
-    },
-    {
-      jobTitle: "Junior software developer",
-      companyName: "Mcdonalds",
-      notes: "7 lorem",
-      status: "APPLIED",
-      createdAt: "20/20/20",
-      appliedDate: "20/20/20",
-      id: "adadwadaiwhdoaikkkkkkmkknknhwdoa",
-    },
-    {
-      jobTitle: "Junior software developer",
-      companyName: "Mcdonalds",
-      notes: "8 lorem",
-      status: "APPLIED",
-      createdAt: "20/20/20",
-      appliedDate: "20/20/20",
-      id: "adadwadaiwhdoa8768gaiugsdiaugihwdoa",
-    },
-  ]);
+  const [applications, setApplications] = useState([]);
+  const [error, setError] = useState(false);
 
   const navigate = useNavigate();
-
+  /*
+useEffect to check if the user is logged in
+ */
   useEffect(() => {
     getTokenFromStorage().then((data) => {
       if (!data) {
@@ -93,6 +25,27 @@ export default function Homepage() {
       }
     });
   }, [navigate]);
+  /*
+   //
+   */
+  /*
+  useEffect to get the users applications
+   */
+  useEffect(() => {
+    getApplications()
+      .then((prevApplications) => {
+        const applicationsCopy = [...prevApplications, ...applications];
+        setApplications(applicationsCopy);
+      })
+      .catch((error) => {
+        setError(error.message);
+      });
+  }, []);
+
+  /*
+   //
+   */
+
   return (
     <div
       className={
@@ -113,12 +66,16 @@ export default function Homepage() {
         />
         <SignOutButton />
       </div>
-      <ApplicationCard
-        setApplications={setApplications}
-        applications={applications}
-        newApp={null}
-        className={null}
-      />
+      {error ? (
+        <h2>{error}</h2>
+      ) : (
+        <ApplicationCard
+          setApplications={setApplications}
+          applications={applications}
+          newApp={null}
+          className={null}
+        />
+      )}
     </div>
   );
 }
