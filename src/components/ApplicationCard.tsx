@@ -54,7 +54,7 @@ export function ApplicationCard({
     <ul className={"flex flex-col gap-2 lg:grid lg:grid-cols-3"}>
       {applications.map((app, index) => {
         return (
-          <li className={"md:w-1/3"} key={app.id + app.companyName}>
+          <li className={"md:w-1/3"} key={app.id}>
             <Card className={cn("w-[380px]", className)} {...props}>
               <CardHeader>
                 <div className={"flex justify-between gap-2"}>
