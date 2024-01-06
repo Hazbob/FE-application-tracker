@@ -69,16 +69,12 @@ useEffect to check if the user is logged in
         />
         <SignOutButton />
       </div>
-      {error ? (
-        <h2 className={"bg-white text-4xl rounded-xl p-10"}>{error}</h2>
-      ) : (
-        <ApplicationCard
-          setApplications={setApplications}
-          applications={applications}
-          newApp={null}
-          className={null}
-        />
-      )}
+      <ApplicationCard
+        setApplications={setApplications}
+        applications={applications}
+        newApp={null}
+        className={null}
+      />
     </div>
   );
 }
