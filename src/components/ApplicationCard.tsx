@@ -13,6 +13,7 @@ import { statusColourSetter } from "@/utils/statusColourSetter.ts";
 import { IoTrashBinSharp } from "react-icons/io5";
 import { Button } from "@/components/ui/button.tsx";
 import { formatDate } from "@/utils/formatDate.ts";
+import deleteApplication from "@/services/deleteApplication.ts";
 type CardProps = React.ComponentProps<typeof Card>;
 
 export function ApplicationCard({
@@ -35,15 +36,6 @@ export function ApplicationCard({
   /*
     HANDLERS
      */
-  async function handleDeleteApplication(id: string) {
-    try {
-      const updatedArray = applications.filter((el) => el.id !== id);
-      return setApplications(updatedArray);
-    } catch (err) {
-      return <h1>{err}</h1>;
-    }
-  }
-
   function handleStatusChange(appId, newStatus) {
     setStatuses((prevStatuses) => ({ ...prevStatuses, [appId]: newStatus }));
   }
@@ -89,7 +81,9 @@ export function ApplicationCard({
                   <p>Applied: {formatDate(app.appliedDate)}</p>
                   <Button
                     aria-label={"delete button"}
-                    onClick={() => handleDeleteApplication(app.id)}
+                    onClick={() =>
+                      deleteApplication(app.id, applications, setApplications)
+                    }
                   >
                     <IoTrashBinSharp />
                   </Button>

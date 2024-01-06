@@ -52,6 +52,7 @@ export async function handleAddApp(
     setters.setLoading(false);
     setters.setIsDialogOpen(false);
     setters.setNeedRetry(false);
+    setters.setError(false);
   } catch (error: any) {
     setters.setError(true);
     setters.setErrorMessage(error.message || "An Error Occured");

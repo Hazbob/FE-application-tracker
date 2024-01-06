@@ -14,6 +14,9 @@ export default async function getApplications() {
       mode: "cors",
     });
     const parsedApplications = await res.json();
+    if (parsedApplications.length === 0) {
+      throw new Error("No applications yet, get applying!!!");
+    }
     return parsedApplications.data;
   } catch (error) {
     throw new Error("Error fetching your applications, please refresh");

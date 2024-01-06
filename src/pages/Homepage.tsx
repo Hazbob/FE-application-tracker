@@ -34,6 +34,9 @@ useEffect to check if the user is logged in
   useEffect(() => {
     getApplications()
       .then((prevApplications) => {
+        if (!prevApplications) {
+          throw new Error("No applications, get applying!!!");
+        }
         const applicationsCopy = [...prevApplications, ...applications];
         setApplications(applicationsCopy);
       })
@@ -67,7 +70,7 @@ useEffect to check if the user is logged in
         <SignOutButton />
       </div>
       {error ? (
-        <h2>{error}</h2>
+        <h2 className={"bg-white text-4xl rounded-xl p-10"}>{error}</h2>
       ) : (
         <ApplicationCard
           setApplications={setApplications}
