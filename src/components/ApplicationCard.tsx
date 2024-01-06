@@ -12,7 +12,7 @@ import { useState } from "react";
 import { statusColourSetter } from "@/utils/statusColourSetter.ts";
 import { IoTrashBinSharp } from "react-icons/io5";
 import { Button } from "@/components/ui/button.tsx";
-
+import { formatDate } from "@/utils/formatDate.ts";
 type CardProps = React.ComponentProps<typeof Card>;
 
 export function ApplicationCard({
@@ -60,7 +60,7 @@ export function ApplicationCard({
                 <div className={"flex justify-between gap-2"}>
                   <span className={"flex-grow"}>
                     <StatusDropdown
-                      status={statuses[app.id]}
+                      status={app.status}
                       setStatus={(newStatus) =>
                         handleStatusChange(app.id, newStatus)
                       }
@@ -86,7 +86,7 @@ export function ApplicationCard({
               </CardContent>
               <CardFooter>
                 <div className={"flex w-full justify-between"}>
-                  <p>Applied: {app.appliedDate}</p>
+                  <p>Applied: {formatDate(app.appliedDate)}</p>
                   <Button
                     aria-label={"delete button"}
                     onClick={() => handleDeleteApplication(app.id)}
