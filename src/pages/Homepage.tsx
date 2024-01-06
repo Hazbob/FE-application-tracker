@@ -87,7 +87,7 @@ export default function Homepage() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    const JWT = getTokenFromStorage().then((data) => {
+    getTokenFromStorage().then((data) => {
       if (!data) {
         navigate("/signin");
       }
@@ -116,6 +116,8 @@ export default function Homepage() {
       <ApplicationCard
         setApplications={setApplications}
         applications={applications}
+        newApp={null}
+        className={null}
       />
     </div>
   );

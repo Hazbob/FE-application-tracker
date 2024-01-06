@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { ComponentProps, useState } from "react";
 
 import {
   Select,
@@ -10,7 +10,11 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 
-export function StatusDropdown({ currentStatus, status, setStatus }) {
+export function StatusDropdown({
+  currentStatus,
+  status,
+  setStatus,
+}: ComponentProps<any>) {
   const handleSelectChange = (value: string) => {
     setStatus(value);
   };

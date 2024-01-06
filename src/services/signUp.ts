@@ -1,4 +1,10 @@
-export default async function registerUser(e, username, password) {
+import { FormEvent } from "react";
+
+export default async function registerUser(
+  e: FormEvent<any>,
+  username: string,
+  password: string,
+) {
   e.preventDefault();
   try {
     const res = await fetch(`${import.meta.env.VITE_API_URL}signup`, {

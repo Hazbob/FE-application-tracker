@@ -1,8 +1,10 @@
-import { Simulate } from "react-dom/test-utils";
-import error = Simulate.error;
-import { data } from "autoprefixer";
+import { ButtonClick } from "@/types/types.ts";
 
-export default async function userSignIn(e, username, password) {
+export default async function userSignIn(
+  e: ButtonClick,
+  username: string,
+  password: string,
+) {
   e.preventDefault();
   try {
     const res = await fetch(import.meta.env.VITE_API_URL + "signin", {
