@@ -8,12 +8,12 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { StatusDropdown } from "@/components/StatusDropdown.tsx";
-import { useState } from "react";
 import { statusColourSetter } from "@/utils/statusColourSetter.ts";
 import { IoTrashBinSharp } from "react-icons/io5";
 import { Button } from "@/components/ui/button.tsx";
 import { formatDate } from "@/utils/formatDate.ts";
 import deleteApplication from "@/services/deleteApplication.ts";
+import updateStatus from "@/services/updateStatus.ts";
 type CardProps = React.ComponentProps<typeof Card>;
 
 export function ApplicationCard({
@@ -26,18 +26,28 @@ export function ApplicationCard({
   /*
     STATES
      */
-  const [statuses, setStatuses] = useState(() =>
-    applications.reduce((acc, app) => {
-      acc[app.id] = app.status;
-      return acc;
-    }, {}),
-  );
+  // const [statuses, setStatuses] = useState(() =>
+  //   applications.reduce((acc, app) => {
+  //     acc[app.id] = app.status;
+  //     return acc;
+  //   }, {}),
+  // );
 
   /*
     HANDLERS
      */
-  function handleStatusChange(appId, newStatus) {
-    setStatuses((prevStatuses) => ({ ...prevStatuses, [appId]: newStatus }));
+  async function handleStatusChange(appId, newStatus) {
+    // setStatuses((prevStatuses) => ({ ...prevStatuses, [appId]: newStatus }));
+    const updatedApps = applications.map((application) => {
+      if (application.id === appId) {
+        application.status = newStatus;
+        return application;
+      } else {
+        return application;
+      }
+    });
+    setApplications(updatedApps);
+    await updateStatus(appId, newStatus);
   }
   /*
   TSX
@@ -53,6 +63,7 @@ export function ApplicationCard({
                   <span className={"flex-grow"}>
                     <StatusDropdown
                       status={app.status}
+                      appId={app.id}
                       setStatus={(newStatus) =>
                         handleStatusChange(app.id, newStatus)
                       }
@@ -62,7 +73,7 @@ export function ApplicationCard({
                   <div
                     id={"dot"}
                     className={`w-10 h-10 rounded-3xl ${statusColourSetter(
-                      statuses[app.id],
+                      app.status,
                     )} ml-1`}
                   ></div>
                 </div>
