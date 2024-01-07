@@ -9,15 +9,22 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import updateStatus from "@/services/updateStatus.ts";
 
 export function StatusDropdown({
   currentStatus,
   status,
   setStatus,
+  appId,
 }: ComponentProps<any>) {
-  const handleSelectChange = (value: string) => {
-    setStatus(value);
-  };
+  async function handleSelectChange(value: string) {
+    try {
+      setStatus(value); // update the UI to render optimistically to have responsive UI
+      await updateStatus(appId, value);
+    } catch (error) {
+      console.error(error);
+    }
+  }
 
   return (
     <Select
