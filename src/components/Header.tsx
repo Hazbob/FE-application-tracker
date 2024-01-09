@@ -1,6 +1,5 @@
 import { MdRadar } from "react-icons/md";
 import { FaGithub } from "react-icons/fa";
-import SignOutButton from "@/components/SignOutButton.tsx";
 
 export default function Header() {
   return (

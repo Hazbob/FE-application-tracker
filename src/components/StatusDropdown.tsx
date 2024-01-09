@@ -17,10 +17,10 @@ export function StatusDropdown({
   setStatus,
   appId,
 }: ComponentProps<any>) {
-  async function handleSelectChange(value: string) {
+  async function handleSelectChange(newStatus: string) {
     try {
-      setStatus(value); // update the UI to render optimistically to have responsive UI
-      await updateStatus(appId, value);
+      setStatus(newStatus); // update the UI to render optimistically to have responsive UI
+      await updateStatus(appId, newStatus);
     } catch (error) {
       console.error(error);
     }
