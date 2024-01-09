@@ -1,6 +1,13 @@
 import { getTokenFromStorage } from "@/utils/tokenStorage.ts";
 
-export default async function (applicationId: string, newStatus: string) {
+export default async function (
+  applicationId: string,
+  newStatus: string,
+  jobTitle: string,
+  companyName: string,
+  notes: string,
+  appliedDate: string,
+) {
   try {
     const token = await getTokenFromStorage();
     const res = await fetch(
@@ -12,11 +19,12 @@ export default async function (applicationId: string, newStatus: string) {
           "Content-Type": "application/json",
         },
         mode: "cors",
-        body: JSON.stringify({ status: newStatus }),
+        body: JSON.stringify({
+          status: newStatus,
+        }),
       },
     );
     const data = await res.json();
-    console.log(data);
   } catch (error) {
     throw error;
   }

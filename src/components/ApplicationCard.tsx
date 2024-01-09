@@ -14,6 +14,7 @@ import { Button } from "@/components/ui/button.tsx";
 import { formatDate } from "@/utils/formatDate.ts";
 import deleteApplication from "@/services/deleteApplication.ts";
 import updateStatus from "@/services/updateStatus.ts";
+import { EditButton } from "@/components/EditButton.tsx";
 type CardProps = React.ComponentProps<typeof Card>;
 
 export function ApplicationCard({
@@ -36,7 +37,7 @@ export function ApplicationCard({
   /*
     HANDLERS
      */
-  async function handleStatusChange(appId, newStatus) {
+  async function handleStatusChange(appId: string, newStatus: string) {
     // setStatuses((prevStatuses) => ({ ...prevStatuses, [appId]: newStatus }));
     const updatedApps = applications.map((application) => {
       if (application.id === appId) {
@@ -98,6 +99,11 @@ export function ApplicationCard({
                   >
                     <IoTrashBinSharp />
                   </Button>
+                  <EditButton
+                    applicationId={app.id}
+                    applications={applications}
+                    setApplications={setApplications}
+                  />
                 </div>
               </CardFooter>
             </Card>
