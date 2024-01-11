@@ -6,6 +6,7 @@ import { getTokenFromStorage } from "@/utils/tokenStorage.ts";
 import { useNavigate } from "react-router-dom";
 import SignOutButton from "@/components/SignOutButton.tsx";
 import getApplications from "@/services/getApplication.ts";
+import ControlHub from "@/components/ControlHub.tsx";
 
 export default function Homepage() {
   const [companyName, setCompanyName] = useState("");
@@ -13,7 +14,7 @@ export default function Homepage() {
   const [notes, setNotes] = useState("");
   const [applications, setApplications] = useState([]);
   const [error, setError] = useState(false);
-
+  const [filterStatus, setFilterStatus] = useState("none");
   const navigate = useNavigate();
   /*
 useEffect to check if the user is logged in
@@ -32,7 +33,7 @@ useEffect to check if the user is logged in
   useEffect to get the users applications
    */
   useEffect(() => {
-    getApplications()
+    getApplications(filterStatus)
       .then((prevApplications) => {
         if (!prevApplications) {
           throw new Error("No applications, get applying!!!");
@@ -43,7 +44,7 @@ useEffect to check if the user is logged in
       .catch((error) => {
         setError(error.message);
       });
-  }, []);
+  }, [filterStatus]);
 
   /*
    //
@@ -56,6 +57,7 @@ useEffect to check if the user is logged in
       }
     >
       <Header />
+
       <div className={"flex gap-2 items-center"}>
         <InputButton
           companyName={companyName}
@@ -69,6 +71,11 @@ useEffect to check if the user is logged in
         />
         <SignOutButton />
       </div>
+      <ControlHub
+        setFilterStatus={setFilterStatus}
+        applications={applications}
+        setApplications={setApplications}
+      />
       <ApplicationCard
         setApplications={setApplications}
         applications={applications}

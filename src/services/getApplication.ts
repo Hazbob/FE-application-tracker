@@ -1,12 +1,20 @@
 import { getTokenFromStorage } from "@/utils/tokenStorage.ts";
 
-export default async function getApplications() {
+export default async function getApplications(filterStatus) {
   try {
     const token = await getTokenFromStorage();
     if (!token) {
       return;
     }
-    const res = await fetch(import.meta.env.VITE_API_URL + "api/app", {
+
+    let queryString: string;
+    if (filterStatus !== "Null" && filterStatus && filterStatus !== "none") {
+      queryString = `api/app?status=${filterStatus}`;
+    } else {
+      queryString = "api/app";
+    }
+
+    const res = await fetch(import.meta.env.VITE_API_URL + queryString, {
       method: "GET",
       headers: {
         Authorization: `Bearer ${token}`,
@@ -17,6 +25,7 @@ export default async function getApplications() {
     if (parsedApplications.length === 0) {
       throw new Error("No applications yet, get applying!!!");
     }
+
     return parsedApplications.data;
   } catch (error) {
     throw new Error("Error fetching your applications, please refresh");
