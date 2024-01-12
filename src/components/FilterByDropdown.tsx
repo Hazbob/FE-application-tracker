@@ -23,6 +23,7 @@ export function FilterByDropdown({
 
   return (
     <Select
+      // @ts-ignore
       className="w-[180px]"
       value={currentFilter}
       onValueChange={handleSelectChange}

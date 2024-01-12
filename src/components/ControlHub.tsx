@@ -1,11 +1,12 @@
 import { FilterByDropdown } from "@/components/FilterByDropdown.tsx";
 import { MdOutlineFilterAlt } from "react-icons/md";
+import { ControlHubProps } from "@/types/types.ts";
 
 export default function ControlHub({
   setFilterStatus,
   applications,
   setApplications,
-}) {
+}: ControlHubProps) {
   const count = applications.length;
   return (
     <div className={"w-full bg-white mb-2 sm:w-1/3 p-2 rounded-xl"}>

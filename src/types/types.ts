@@ -47,3 +47,9 @@ export interface UpdateAppInput {
   notes?: string | undefined;
   appliedDate?: string | undefined;
 }
+
+export interface ControlHubProps {
+  setFilterStatus: (status: any) => void; // Replace 'any' with a more specific type as needed
+  applications: any[]; // Replace 'any' with a more specific type as needed
+  setApplications: (apps: any[]) => void; // Replace 'any' with a more specific type as needed
+}

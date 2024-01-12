@@ -12,7 +12,7 @@ export default function Homepage() {
   const [companyName, setCompanyName] = useState("");
   const [jobTitle, setJobTitle] = useState("");
   const [notes, setNotes] = useState("");
-  const [applications, setApplications] = useState([]);
+  const [applications, setApplications]: any[] = useState([]);
   const [error, setError] = useState(false);
   const [filterStatus, setFilterStatus] = useState("none");
   const navigate = useNavigate();
@@ -57,7 +57,7 @@ useEffect to check if the user is logged in
       }
     >
       <Header />
-
+      {error ? error : ""}
       <div className={"flex gap-2 items-center"}>
         <InputButton
           companyName={companyName}
