@@ -36,8 +36,7 @@ useEffect to check if the user is logged in
     getApplications(filterStatus)
       .then((prevApplications) => {
         if (!prevApplications) {
-          const applicationsCopy = [...applications];
-          setApplications(applicationsCopy);
+          throw new Error("");
         }
         const applicationsCopy = [...prevApplications, ...applications];
         setApplications(applicationsCopy);
