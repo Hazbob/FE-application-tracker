@@ -15,9 +15,9 @@ import updateApplication from "@/services/updateApplication.ts";
 
 export function EditButton({ applicationId, setApplications, applications }) {
   const [isDialogOpen, setIsDialogOpen] = useState(false);
-  const [error, setError] = useState(false);
-  const [errorMessage, setErrorMessage] = useState("");
-  const [isLoading, setLoading] = useState(false);
+  const [error] = useState(false);
+  const [errorMessage] = useState("");
+  const [isLoading] = useState(false);
   const [jobTitle, setJobTitle] = useState("");
   const [companyName, setCompanyName] = useState("");
   const [notes, setNotes] = useState("");

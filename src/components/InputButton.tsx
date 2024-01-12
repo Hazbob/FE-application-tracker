@@ -9,7 +9,7 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog";
 import { useState } from "react";
-import postApplication, { handleAddApp } from "@/services/postApplication.ts";
+import { handleAddApp } from "@/services/postApplication.ts";
 import Loader from "@/components/Loader.tsx";
 import RetryButton from "@/components/RetryButton.tsx";
 
@@ -28,7 +28,7 @@ export function InputButton({
   const [errorMessage, setErrorMessage] = useState("");
   const [isLoading, setLoading] = useState(false);
   const [needRetry, setNeedRetry] = useState(false);
-  const setters = {
+  const setters: any = {
     setErrorMessage,
     setLoading,
     setIsDialogOpen,
@@ -55,7 +55,6 @@ export function InputButton({
                 jobTitle,
                 notes,
                 applications,
-                setApplications,
               )
             }
           >

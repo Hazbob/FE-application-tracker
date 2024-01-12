@@ -1,4 +1,4 @@
-import { ComponentProps, useState } from "react";
+import { ComponentProps } from "react";
 
 import {
   Select,
@@ -12,7 +12,6 @@ import {
 import updateStatus from "@/services/updateStatus.ts";
 
 export function StatusDropdown({
-  currentStatus,
   status,
   setStatus,
   appId,
@@ -28,6 +27,7 @@ export function StatusDropdown({
 
   return (
     <Select
+      // @ts-ignore
       className="w-[180px]"
       value={status}
       onValueChange={handleSelectChange}

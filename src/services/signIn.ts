@@ -1,7 +1,5 @@
-import { ButtonClick } from "@/types/types.ts";
-
 export default async function userSignIn(
-  e: ButtonClick,
+  e: any,
   username: string,
   password: string,
 ) {
