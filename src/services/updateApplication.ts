@@ -24,19 +24,15 @@ export default async function updateApplication(
     appliedDate,
   );
   try {
-    const res = await fetch(
-      import.meta.env.VITE_API_URL + `api/app/${applicationId}`,
-      {
-        method: "PUT",
-        headers: {
-          Authorization: `Bearer ${token}`,
-          "Content-Type": "application/json",
-        },
-        mode: "cors",
-        body: JSON.stringify(input),
+    await fetch(import.meta.env.VITE_API_URL + `api/app/${applicationId}`, {
+      method: "PUT",
+      headers: {
+        Authorization: `Bearer ${token}`,
+        "Content-Type": "application/json",
       },
-    );
-    const data = await res.json();
+      mode: "cors",
+      body: JSON.stringify(input),
+    });
   } catch (error) {
     console.log(error);
   }

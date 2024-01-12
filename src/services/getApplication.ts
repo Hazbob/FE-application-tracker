@@ -1,6 +1,6 @@
 import { getTokenFromStorage } from "@/utils/tokenStorage.ts";
 
-export default async function getApplications(filterStatus) {
+export default async function getApplications(filterStatus: string) {
   try {
     const token = await getTokenFromStorage();
     if (!token) {

@@ -1,11 +1,11 @@
 import { UpdateAppInput } from "@/types/types.ts";
-import { convertDateFormatForUpdate, formatDate } from "@/utils/formatDate.ts";
+import { convertDateFormatForUpdate } from "@/utils/formatDate.ts";
 
 export default function createInput(
-  jobTitle: string,
-  companyName: string,
-  notes: string,
-  appliedDate: string,
+  jobTitle: string | undefined,
+  companyName: string | undefined,
+  notes: string | undefined,
+  appliedDate: string | undefined,
 ): UpdateAppInput {
   const output: UpdateAppInput = {};
   if (jobTitle) {

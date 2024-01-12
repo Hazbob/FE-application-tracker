@@ -42,7 +42,7 @@ export interface Application {
 export type OperationCheck = React.ComponentProps<any>;
 
 export interface UpdateAppInput {
-  jobTitle?: string | undefined;
+  jobTitle?: any;
   companyName?: string | undefined;
   notes?: string | undefined;
   appliedDate?: string | undefined;
