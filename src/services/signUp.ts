@@ -7,6 +7,7 @@ export default async function registerUser(
 ) {
   e.preventDefault();
   try {
+    console.log(username, password);
     const res = await fetch(`${import.meta.env.VITE_API_URL}signup`, {
       method: "POST",
       mode: "cors",
@@ -15,6 +16,7 @@ export default async function registerUser(
         "Content-Type": "application/json",
       },
     });
+    console.log(res);
     const data = await res.json();
 
     if (!res.ok) {
