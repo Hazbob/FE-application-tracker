@@ -8,7 +8,7 @@ import { useNavigate } from "react-router-dom";
 import { saveTokenToStorage } from "@/utils/tokenStorage.ts";
 import userSignIn from "@/services/signIn.ts";
 import { OperationCheck } from "@/types/types.ts";
-import { Loader } from "lucide-react";
+import Loader from "@/components/Loader.tsx";
 
 export default function SignIn({ operation }: OperationCheck) {
   const navigate = useNavigate();
@@ -31,6 +31,7 @@ export default function SignIn({ operation }: OperationCheck) {
         setErrorMessage(error.message);
       }
     } else {
+      setLoading(true);
       try {
         const JWT = await registerUser(e, username, password);
         await saveTokenToStorage(JWT);
@@ -103,7 +104,7 @@ export default function SignIn({ operation }: OperationCheck) {
           </div>
         ) : (
           <div>
-            <p>Already a member?</p>{" "}
+            <p>Already a member?</p>
             <NavLink className={"text-blue-700 underline"} to={"/signin"}>
               Sign In
             </NavLink>
