@@ -6,6 +6,7 @@ export default function ControlHub({
   setFilterStatus,
   applications,
   setApplications,
+  setLoading,
 }: ControlHubProps) {
   const count = applications.length;
   return (
@@ -19,6 +20,7 @@ export default function ControlHub({
           setFilterStatus={setFilterStatus}
           applications={applications}
           setApplications={setApplications}
+          setLoading={setLoading}
         />
       </div>
     </div>

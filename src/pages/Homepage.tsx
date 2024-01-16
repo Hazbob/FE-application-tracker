@@ -79,6 +79,7 @@ useEffect to check if the user is logged in
         setFilterStatus={setFilterStatus}
         applications={applications}
         setApplications={setApplications}
+        setLoading={setLoading}
       />
       {isLoading ? (
         <Loader />
