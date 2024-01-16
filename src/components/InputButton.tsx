@@ -68,17 +68,17 @@ export function InputButton({
               <div className="grid grid-cols-4 items-center gap-4">
                 {error && <p>{errorMessage}</p>}
                 <label htmlFor="company-name" className="text-right">
-                  Company Name
+                  Company
                 </label>
                 <input
                   onChange={(e) => setCompanyName(e.target.value)}
                   value={companyName}
                   id="company-name"
                   required={true}
-                  className="col-span-3"
+                  className="col-span-3 border-black border-2 rounded-l"
                 />
               </div>
-              <div className="grid grid-cols-4 items-center gap-4">
+              <div className="grid grid-cols-4 items-center gap-4 ">
                 <label htmlFor="job-title" className="text-right">
                   Job Title
                 </label>
@@ -87,7 +87,7 @@ export function InputButton({
                   value={jobTitle}
                   id="job-title"
                   required={true}
-                  className="col-span-3"
+                  className="col-span-3 border-black border-2 rounded-l"
                 />
               </div>
               <div className="grid grid-cols-4 items-center gap-4">
@@ -98,7 +98,7 @@ export function InputButton({
                   onChange={(e) => setNotes(e.target.value)}
                   value={notes}
                   id="notes"
-                  className="col-span-3"
+                  className="col-span-3 border-black border-2 rounded-l"
                 />
               </div>
             </div>
