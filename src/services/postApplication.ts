@@ -53,6 +53,9 @@ export async function handleAddApp(
     setters.setIsDialogOpen(false);
     setters.setNeedRetry(false);
     setters.setError(false);
+    setters.setJobTitle("");
+    setters.setNotes("");
+    setters.setCompanyName("");
   } catch (error: any) {
     setters.setError(true);
     setters.setErrorMessage(error.message || "An Error Occured");
