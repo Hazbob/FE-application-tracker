@@ -6,7 +6,7 @@ export default function LandingPage() {
   return (
     <div
       className={
-        "flex-col flex  items-center min-h-screen bg-blue-950 py-20 gap-4 justify-center§ "
+        "flex-col flex  items-center min-h-screen bg-blue-950 py-20 gap-4 justify-center "
       }
     >
       <h1 className={"text-white text-4xl"}>Résumé Radar</h1>
