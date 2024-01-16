@@ -8,6 +8,7 @@ import { useNavigate } from "react-router-dom";
 import { saveTokenToStorage } from "@/utils/tokenStorage.ts";
 import userSignIn from "@/services/signIn.ts";
 import { OperationCheck } from "@/types/types.ts";
+import { Loader } from "lucide-react";
 
 export default function SignIn({ operation }: OperationCheck) {
   const navigate = useNavigate();
@@ -15,12 +16,15 @@ export default function SignIn({ operation }: OperationCheck) {
   const [errorMessage, setErrorMessage] = useState("");
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const [isLoading, setLoading] = useState(false);
   const handleSubmit = async (e: React.FormEvent<any>) => {
     e.preventDefault();
     if (operation === "signin") {
+      setLoading(true);
       try {
         const JWT = await userSignIn(e, username, password);
         await saveTokenToStorage(JWT);
+        setLoading(false);
         navigate("/home");
       } catch (error: any) {
         setError(true);
@@ -82,7 +86,13 @@ export default function SignIn({ operation }: OperationCheck) {
           required={true}
         />
         <Button className={"my-2"} type={"submit"}>
-          {operation === "signin" ? "Sign In" : "Sign Up"}
+          {isLoading ? (
+            <Loader />
+          ) : operation === "signin" ? (
+            "Sign In"
+          ) : (
+            "Sign Up"
+          )}
         </Button>
         {operation === "signin" ? (
           <div>
