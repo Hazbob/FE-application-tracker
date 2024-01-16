@@ -7,6 +7,7 @@ import { useNavigate } from "react-router-dom";
 import SignOutButton from "@/components/SignOutButton.tsx";
 import getApplications from "@/services/getApplication.ts";
 import ControlHub from "@/components/ControlHub.tsx";
+import Loader from "@/components/Loader.tsx";
 
 export default function Homepage() {
   const [companyName, setCompanyName] = useState("");
@@ -16,6 +17,7 @@ export default function Homepage() {
   const [error, setError] = useState(false);
   const [filterStatus, setFilterStatus] = useState("none");
   const navigate = useNavigate();
+  const [isLoading, setLoading] = useState(true);
   /*
 useEffect to check if the user is logged in
  */
@@ -40,6 +42,7 @@ useEffect to check if the user is logged in
         }
         const applicationsCopy = [...prevApplications, ...applications];
         setApplications(applicationsCopy);
+        setLoading(false);
       })
       .catch((error) => {
         setError(error.message);
@@ -76,12 +79,16 @@ useEffect to check if the user is logged in
         applications={applications}
         setApplications={setApplications}
       />
-      <ApplicationCard
-        setApplications={setApplications}
-        applications={applications}
-        newApp={null}
-        className={null}
-      />
+      {isLoading ? (
+        <Loader />
+      ) : (
+        <ApplicationCard
+          setApplications={setApplications}
+          applications={applications}
+          newApp={null}
+          className={null}
+        />
+      )}
     </div>
   );
 }
