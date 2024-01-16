@@ -54,9 +54,9 @@ export default function SignIn({ operation }: OperationCheck) {
         }
         onSubmit={handleSubmit}
       >
-        <h1>Resume Radar</h1>
         <img className={"w-1/3"} src={logo} alt="logo image" />
-        <label htmlFor="username">Username:</label>
+        <h1 className={"text-4xl"}>Résumé Radar</h1>
+        <label htmlFor="username">Username</label>
         {error && <p>{errorMessage}</p>}
         <input
           className={"border-2 border-black rounded-xl p-2  "}
@@ -69,7 +69,7 @@ export default function SignIn({ operation }: OperationCheck) {
           value={username}
           required={true}
         />
-        <label htmlFor="password">Password:</label>
+        <label htmlFor="password">Password</label>
         <input
           className={"border-2 border-black rounded-xl p-2 "}
           onChange={(e) => {
