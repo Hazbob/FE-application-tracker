@@ -13,12 +13,14 @@ import {
 export function FilterByDropdown({
   setFilterStatus,
   setApplications,
+  setLoading,
 }: ComponentProps<any>) {
   const [currentFilter, setCurrentFilter] = useState("No Filter");
   async function handleSelectChange(newFilter: string) {
     setCurrentFilter(newFilter);
     setFilterStatus(newFilter);
     setApplications([]);
+    setLoading(true);
   }
 
   return (
