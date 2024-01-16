@@ -24,8 +24,7 @@ export default function LandingPage() {
       </div>
       <div className={"bg-white flex-row m-2 rounded-l"}>
         <p className={"text-black text-center m-2 "}>
-          For when you forget what you've applied for, sign up to keep them on
-          your radar.
+          Keeping your applications in sight, on track, on Radar.
         </p>
       </div>
       <nav
