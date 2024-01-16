@@ -27,6 +27,7 @@ export default function SignIn({ operation }: OperationCheck) {
         setLoading(false);
         navigate("/home");
       } catch (error: any) {
+        setLoading(false);
         setError(true);
         setErrorMessage(error.message);
       }
@@ -42,6 +43,8 @@ export default function SignIn({ operation }: OperationCheck) {
         } else {
           setErrorMessage("An unknown error occurred");
         }
+        setLoading(false);
+
         setError(true);
       }
     }
