@@ -52,7 +52,8 @@ export interface UpdateAppInput {
 }
 
 export interface ControlHubProps {
-  setFilterStatus: (status: any) => void; // Replace 'any' with a more specific type as needed
-  applications: any[]; // Replace 'any' with a more specific type as needed
-  setApplications: (apps: any[]) => void; // Replace 'any' with a more specific type as needed
+  setFilterStatus: (status: any) => void;
+  applications: any[];
+  setApplications: (apps: any[]) => void;
+  setLoading: (value: ((prevState: boolean) => boolean) | boolean) => void;
 }
