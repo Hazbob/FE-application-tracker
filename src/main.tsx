@@ -4,11 +4,12 @@ import "./index.css";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import SignIn from "@/pages/SignIn.tsx";
 import Homepage from "@/pages/Homepage.tsx";
+import LandingPage from "@/pages/LandingPage.tsx";
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <SignIn operation={"signin"} />,
+    element: <LandingPage />,
   },
   {
     path: "/signin",
