@@ -1,5 +1,5 @@
 Résumé Radar
-Résumé Radar is a cutting-edge application designed to revolutionize the way professionals manage and share their résumés. Developed with React, this app boasts a sleek, user-friendly interface powered by stylish components from Shadcn. With the implementation of react-router-dom, users enjoy seamless navigation throughout the application.
+Résumé Radar is a cutting-edge application designed to help professionals manage their applications. Developed with React, this app boasts a sleek, user-friendly interface powered by stylish components from Shadcn. With the implementation of react-router-dom, users enjoy seamless navigation throughout the application.
 
 Key Features
 Optimistic Rendering: Enhancing the user experience with fast, responsive interfaces that anticipate the result of user actions.
