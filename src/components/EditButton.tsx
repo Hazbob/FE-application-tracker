@@ -48,15 +48,22 @@ export function EditButton({ applicationId, setApplications, applications }) {
     });
 
     setApplications(editedApplications);
+    try {
+      await updateApplication(
+        applicationId,
+        jobTitle,
+        companyName,
+        notes,
+        appliedDate,
+      );
 
-    // changes made to db
-    await updateApplication(
-      applicationId,
-      jobTitle,
-      companyName,
-      notes,
-      appliedDate,
-    );
+      setJobTitle("");
+      setNotes("");
+      setCompanyName("");
+      setAppliedDate("");
+    } catch (error) {
+      console.log(error);
+    }
   }
 
   return (

@@ -35,6 +35,9 @@ export function InputButton({
     setNeedRetry,
     setError,
     setApplications,
+    setJobTitle,
+    setNotes,
+    setCompanyName,
   };
 
   return (

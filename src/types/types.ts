@@ -18,6 +18,9 @@ export type Setters = {
   setNeedRetry: React.Dispatch<React.SetStateAction<boolean>>;
   setError: React.Dispatch<React.SetStateAction<boolean>>;
   setApplications: React.Dispatch<React.SetStateAction<any>>;
+  setJobTitle: React.Dispatch<React.SetStateAction<any>>;
+  setCompanyName: React.Dispatch<React.SetStateAction<any>>;
+  setNotes: React.Dispatch<React.SetStateAction<any>>;
 };
 
 export interface RetryButtonArgs {
