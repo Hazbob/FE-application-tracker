@@ -9,6 +9,7 @@ import { saveTokenToStorage } from "@/utils/tokenStorage.ts";
 import userSignIn from "@/services/signIn.ts";
 import { OperationCheck } from "@/types/types.ts";
 import Loader from "@/components/Loader.tsx";
+import PasswordGuide from "@/components/PasswordGuide.tsx";
 
 export default function SignIn({ operation }: OperationCheck) {
   const navigate = useNavigate();
@@ -17,6 +18,8 @@ export default function SignIn({ operation }: OperationCheck) {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [isLoading, setLoading] = useState(false);
+  const [capitalTest, setCapitalTest] = useState(false);
+  const [specialTest, setSpecialTest] = useState(false);
   const handleSubmit = async (e: React.FormEvent<any>) => {
     e.preventDefault();
     if (operation === "signin") {
@@ -81,15 +84,31 @@ export default function SignIn({ operation }: OperationCheck) {
         <input
           className={"border-2 border-black rounded-xl p-2 "}
           onChange={(e) => {
+            const oneCapital = /(?=.*[A-Z])/;
+            const oneSpecial = /(?=.*[!@#$%^&*])/;
+
             setError(false);
             setPassword(e.target.value);
+            setCapitalTest(oneCapital.test(e.target.value));
+            setSpecialTest(oneSpecial.test(e.target.value));
           }}
           type="password"
           id={"password"}
           value={password}
           required={true}
         />
-        <Button className={"my-2"} type={"submit"}>
+        {operation === "signup" ? (
+          <PasswordGuide
+            capitalTest={capitalTest}
+            specialTest={specialTest}
+            password={password}
+          />
+        ) : null}
+        <Button
+          disabled={!(capitalTest && specialTest)}
+          className={"my-2"}
+          type={"submit"}
+        >
           {isLoading ? (
             <Loader />
           ) : operation === "signin" ? (
