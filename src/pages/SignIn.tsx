@@ -98,11 +98,7 @@ export default function SignIn({ operation }: OperationCheck) {
           required={true}
         />
         {operation === "signup" ? (
-          <PasswordGuide
-            capitalTest={capitalTest}
-            specialTest={specialTest}
-            password={password}
-          />
+          <PasswordGuide capitalTest={capitalTest} specialTest={specialTest} />
         ) : null}
         <Button
           disabled={!(capitalTest && specialTest)}
