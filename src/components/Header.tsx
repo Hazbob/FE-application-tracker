@@ -15,7 +15,11 @@ export default function Header() {
           <h1 className={"text-white"}>Résumé Radar</h1>
         </div>
       </Link>
-      <a target={"_blank"} href="https://github.com/Hazbob/Application-Tracker">
+      <a
+        aria-label={"link to the repository for this projects backend"}
+        target={"_blank"}
+        href="https://github.com/Hazbob/Application-Tracker"
+      >
         <FaGithub color={"white"} size={"1.5em"} />
       </a>
     </header>
