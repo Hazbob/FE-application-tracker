@@ -15,7 +15,7 @@ export function FilterByDropdown({
   setApplications,
   setLoading,
 }: ComponentProps<any>) {
-  const [currentFilter, setCurrentFilter] = useState("No Filter");
+  const [currentFilter, setCurrentFilter] = useState("");
   async function handleSelectChange(newFilter: string) {
     setCurrentFilter(newFilter);
     setFilterStatus(newFilter);
