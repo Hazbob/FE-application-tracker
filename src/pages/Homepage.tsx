@@ -8,6 +8,7 @@ import SignOutButton from "@/components/SignOutButton.tsx";
 import getApplications from "@/services/getApplication.ts";
 import ControlHub from "@/components/ControlHub.tsx";
 import Loader from "@/components/Loader.tsx";
+import SearchBar from "@/components/SearchBar.tsx";
 
 export default function Homepage() {
   const [companyName, setCompanyName] = useState("");
@@ -18,6 +19,8 @@ export default function Homepage() {
   const [filterStatus, setFilterStatus] = useState("none");
   const navigate = useNavigate();
   const [isLoading, setLoading] = useState(true);
+  const [searching, setSearching] = useState(false);
+  const [searchedApps, setSearchedApps] = useState([]);
   /*
 useEffect to check if the user is logged in
  */
@@ -63,6 +66,11 @@ useEffect to check if the user is logged in
       <Header />
       {error ? error : ""}
       <div className={"flex gap-2 items-center"}>
+        <SearchBar
+          applications={applications}
+          setSearching={setSearching}
+          setSearchedApps={setSearchedApps}
+        />
         <InputButton
           companyName={companyName}
           setCompanyName={setCompanyName}
@@ -86,7 +94,7 @@ useEffect to check if the user is logged in
       ) : (
         <ApplicationCard
           setApplications={setApplications}
-          applications={applications}
+          applications={searching ? searchedApps : applications}
           newApp={null}
           className={null}
         />
