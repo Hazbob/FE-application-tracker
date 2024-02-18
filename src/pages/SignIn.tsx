@@ -98,7 +98,7 @@ export default function SignIn({ operation }: OperationCheck) {
           required={true}
         />
         {operation === "signup" ? (
-          <PasswordGuide capitalTest={capitalTest} specialTest={specialTest} />
+          <PasswordGuide capitalTest={specialTest} specialTest={capitalTest} />
         ) : null}
         <Button
           disabled={
